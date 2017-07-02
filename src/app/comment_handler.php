@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once('database/database.php');
 
 if($_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -7,16 +7,16 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
     exit(0);
 }
 
-$topic_id = $_POST['topic_id'];
+$topic_id = $_GET['topic_id'];
 $content = $_POST['content'];
-$user_id = 1;
 
-$statement = $conn->prepare("INSERT INTO replies(content, user_id, topic_id) VALUES(:content, :user_id, :topic_id)");
+
+$statement = $conn->prepare("INSERT INTO replies(content, username, topic_id) VALUES(:content, :username, :topic_id)");
 $statement->execute( [
     ':content' => $content,
-    ':user_id' => $user_id,
-    ':topic_id' => $topic_id
-] );
+    ':username' => $_SESSION['username'],
+    ':topic_id' => $topic_id,
+]);
 
 
-header('Location: ../index.php');
+header('Location: ../topic.php?topic_id=' . $_GET['topic_id']);

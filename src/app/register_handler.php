@@ -24,7 +24,6 @@ if (isset($_POST['login-submit'])) {
         ]);
             $signup_message = '<div class="alert alert-success text-center" role="alert"><h3>U bent succesvol geregistreerd!</h3></div>';
 
-
     } else{
         $no_match_msg = '<div class="alert alert-danger text-center" role="alert"><h3>Wachtwoorden komen niet overeen</h3></div>';
     }

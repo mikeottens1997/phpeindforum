@@ -1,8 +1,7 @@
 <?php
 session_start();
 include_once ('app/database/database.php');
-include_once ('app/database/themes.php');
-include_once ('login_handler.php');
+
 
 $statement = $conn->prepare('SELECT * FROM replies');
 $statement->execute();
@@ -60,7 +59,6 @@ $replies = $statement->fetchAll();
                     echo '<li><a href="app/logout.php">Logout</a></li>';
                     echo '<li><a> ingelogd als  ' . $_SESSION['username'] . '</li></a>';
 
-
                 } else{
                     echo '
                 <li><a href="sign_up.php">sign up</a></li>
@@ -85,62 +83,51 @@ $replies = $statement->fetchAll();
 
         <!-- Blog Post Content Column -->
         <div class="col-lg-8">
-            <div class="page-header">
-                <h3>Themes</h3>
-            </div>
-            <?php getThemes(); ?>
-        </div>
 
-        <div class="col-md-4">
-            <div class="page-header">
-                <h3>Recent topics</h3>
+            <!-- Comments Form -->
+            <div class="well"
+                 <h4>new onderwerp</h4>
+            <form role="form" method="POST" action="app/topic_handler.php">
+                <input type="hidden" name="topic_id" value="1">
+            <div class="form-group">
+
+                <label class="col-md-12 control-label" for=" nieuw onderwerp">nieuw onderwerp</label>
+                <div class="col-md-12">
+                    <input type="text" id="subject" name="subject" placeholder="onderwerp" class="form-control input-lg">
+
+                    <div class="form-group">
+                        <textarea class="form-control" name="content"  placeholder="vul hier uw tekst in" rows="3"></textarea>
+                    </div>
+                    <div>
+                        <button <a href=" new_topic.php" type="submit" class="btn btn-primary"</a>Submit</button>
+
+                </div>
             </div>
-            <div class="list-group">
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">uitleg html</h4>
-                    <p class="list-group-item-text">meer uitleg over html</p>
-                </a>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">uitleg php</h4>
-                    <p class="list-group-item-text">meeruitleg over php</p>
-                </a>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">uitleg javascript</h4>
-                    <p class="list-group-item-text">meer uitleg over javascript</p>
-                </a>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">uitleg css</h4>
-                    <p class="list-group-item-text">meer uitleg over css</p>
-                </a>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">uitleg php</h4>
-                    <p class="list-group-item-text">meer uitleg over php</p>
-                </a>
+
+            </form>
             </div>
-        </div>
-        <div>
-        <form action="new_topic.php" method="post">
-            <input type="submit" class="btn btn-primary" value="new theme">
-        </form>
-            </div>
+
+
+
+
         <!-- Footer -->
         <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright &copy; mike ottens 2017</p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; mike ottens 2017</p>
+                </div>
             </div>
-        </div>
-        <!-- /.row -->
-    </footer>
+            <!-- /.row -->
+        </footer>
 
-</div>
-<!-- /.container -->
+    </div>
+    <!-- /.container -->
 
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
 </body>
 

@@ -3,7 +3,7 @@
 
 
 if (isset($_POST['login-submit'])) {
-
+global $username;
 $username = $_POST['username'];
 $password = $_POST['password'];
 
